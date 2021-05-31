@@ -109,13 +109,13 @@ final class WMFEscalateTaskController extends PhabricatorController {
           id(clone $comment_template)
             ->setContent($comment_text));
       if (!empty($project_phids)) {
-        $project_phids[] = WMFSecurityPolicy::getProjectByName('security')->getPHID();
+        $addproject_phids[] = WMFSecurityPolicy::getProjectByName('security')->getPHID();
         $type_edge = PhabricatorTransactions::TYPE_EDGE;
         $xactions[$type_edge] = id(new ManiphestTransaction())
           ->setTransactionType($type_edge)
           ->setMetadataValue('edge:type',
                 PhabricatorProjectObjectHasProjectEdgeType::EDGECONST)
-          ->setNewValue(array('+' => array_fuse($project_phids)));
+          ->setNewValue(array('+' => array_fuse($addproject_phids)));
       }
       $xactions[] = id(new ManiphestTransaction())
         ->setTransactionType(PhabricatorTransactions::TYPE_VIEW_POLICY)
