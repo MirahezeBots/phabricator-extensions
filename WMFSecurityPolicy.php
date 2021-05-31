@@ -29,15 +29,7 @@ final class WMFSecurityPolicy
    *                                 is set to none
    */
   public static function getSecurityProjectForTask($task) {
-    switch (WMFSecurityPolicy::getSecurityFieldValue($task)) {
-      case 'sensitive':
-        return WMFSecurityPolicy::getProjectByName('WMF-NDA');
-      case 'security-bug':
-        return WMFSecurityPolicy::getProjectByName('security');
-      case 'ops-access-request':
-        return WMFSecurityPolicy::getProjectByName('Ops-Access-Requests');
-      default:
-        return false;
+      return WMFSecurityPolicy::getProjectByName('acl*security');
     }
   }
   /**
