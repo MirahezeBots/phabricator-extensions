@@ -85,7 +85,7 @@ final class WMFEscalateTaskController extends PhabricatorController {
       $template = $task->getApplicationTransactionTemplate();
       $comment_template = $template->getApplicationTransactionCommentObject();
       $project_philds = array();
-      if ($project = WMFSecurityPolicy::getProjectByName('security')) {
+      if ($project = WMFSecurityPolicy::getProjectByName('acl*security')) {
         $project_phids[] = $project->getPHID();
       }
       phlog($project_phids);
@@ -109,6 +109,7 @@ final class WMFEscalateTaskController extends PhabricatorController {
           id(clone $comment_template)
             ->setContent($comment_text));
       if (!empty($project_phids)) {
+        $project_phids[] = WMFSecurityPolicy::getProjectByName('security')->getPHID();
         $type_edge = PhabricatorTransactions::TYPE_EDGE;
         $xactions[$type_edge] = id(new ManiphestTransaction())
           ->setTransactionType($type_edge)
