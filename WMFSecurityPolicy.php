@@ -29,8 +29,7 @@ final class WMFSecurityPolicy
    *                                 is set to none
    */
   public static function getSecurityProjectForTask($task) {
-      return WMFSecurityPolicy::getProjectByName('acl*security');
-    }
+    return WMFSecurityPolicy::getProjectByName('acl*security');
   }
   /**
    * filter a list of transactions to remove any policy changes that would
