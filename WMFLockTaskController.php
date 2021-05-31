@@ -136,21 +136,18 @@ final class WMFEscalateTaskController extends PhabricatorController {
     // Important is shown in a red box:
     $instructions = <<<MSG
 IMPORTANT: You should only escalate tasks that describe
-real or potential security vulnerabilities with Wikimedia software or services.
+real or potential security vulnerabilities with MirahezeBots software or services.
 MSG;
     // detailed explanation is collapsed by default with a link to expand it.
-    $more_info_url = "https://www.mediawiki.org/wiki/Reporting_security_bugs";
     $detail = <<<DETAIL
 This feature is used to correct the `view policy` on security bugs that were
 incorrectly submitted as regular bug reports.
 Security bugs should be escalated because of the potential that the information
-could be used to develop an exploit or otherwise harm Wikimedia services or the
+could be used to develop an exploit or otherwise harm MirahezeBots services or the
 many people and organizations who utilize our software.
 Generally the details will be made public again once the security team has
 had time to properly address the issue and publically announce the
 vulnerability.
-See [[$more_info_url|Reporting security bugs]] for more information about
-reporting a vulnerability.
 DETAIL;
     // Specific information about who can view a task after escalation:
     $who_can_view = <<<WHO
